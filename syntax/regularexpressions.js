@@ -17,7 +17,7 @@ re.test(s) // test from the regular expression on the string
 // to check for full values a-zA-Z0-9_ we can repalce this with /\w/
 // the same but for negative with /\W/ capital
 
-console.log(/\W/.test(s));
+// console.log(/\W/.test(s));
 
 // [0-9] = /\d/ opposite [^0-9] = /\D/ except for all the values 
 // /./.test("igor") = all symbols except for the line break \n
@@ -62,3 +62,21 @@ console.log(/\W/.test(s));
     true
     
 */
+
+const date = "f15-06-2018";
+
+
+// console.log(/[0-9]{1,2}-[0-9]{1,2}-[0-9]{4}/.test("15-03-1986"));
+// console.log(/\d{1,2}-\d{1,2}-\d{4}/.test(date));
+
+
+
+// console.log(/\d{1,2}-\d{1,2}-\d{4}/.test(date));
+// console.log(/ [0-9] /.test(5));
+
+// the string should start with # ^ - has to be outside of []
+    console.log(/^[1-3]?[0-9]-[0-1]?[0-9]-\d{4}/.test(date));
+
+
+
+
