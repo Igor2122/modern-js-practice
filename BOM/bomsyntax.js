@@ -1,6 +1,3 @@
-
-
-
 /*   
     
     Window parameters
@@ -13,6 +10,16 @@
                 }
             }
         screen: width, height, availwidth, availheight;
+        
+            
+                function f() {
+                    let s = '';
+                    for (let i in screen) {
+                        console.log(s, ':', screen[i]);
+                    }
+                }
+
+f();ı
         location: ex: http://www.site.com:81/about/index.html?x=10#metka
             location: properties: 
                 protocol: => 'http:'
@@ -27,6 +34,12 @@
                 location.reload(true) -  request reload from the server without cache like ctrl f5
                 assign/replace: location.assign('www....') replace replaces the current page with newly assined. assign will siply add the previous page to the history log 
                 document - is mostyly used 
+                    old: document.title = 'hello'
+                         document.bgColor = 'red'
+                ========== 
+                window.methods
+                    dialogs: alert(), confirm() - returns true or false, promtp('Qquestion will come here', 'Yes') first question latest default answer that can be changed
+                    setTimeOut
             
 
 
@@ -39,18 +52,40 @@ button.addEventListener('click', doSomething);
 
 function doSomething(e) {
     e.preventDefault();
-
-
-
 }
 
+// WINDOW TIMING METHODS
+// setTimeOut(func, 1000)
 
+const greenObj = document.querySelector('.object');
+const h1 = document.querySelector('.object h1');
 
-function f() {
-    let s = '';
-    for (let i in screen) {
-        console.log(s, ':', screen[i]);
-    }
+greenObj.addEventListener('mouseover', doSomth);
+greenObj.addEventListener('mouseleave', unDoSomth);
+
+let wiggleAnimation;
+
+function foo() {
+    // greenObj.style.background = 'purple';
+    greenObj.classList.add('animation');
 }
 
-f();
+function addText(txt) {
+    h1.style.left = '0';
+}
+
+function doSomth() {
+    // wiggleAnimation = window.setTimeout(foo, 2000);
+    wiggleAnimation = window.setTimeout(
+            //'addText("Hello")' // also we can add addText without () && '' but cant add any argm
+            function (){ addText( 'hello' ) }
+        , 2000);
+    // wiggleAnimation = window.setInterval(foo, 2000);
+    console.log(wiggleAnimation);
+}
+
+function unDoSomth() {
+    window.clearTimeout(wiggleAnimation);
+}
+
+// setInterval , clearInterval - works the same way but setInterval will repeat itself with the mentioned time that was set
