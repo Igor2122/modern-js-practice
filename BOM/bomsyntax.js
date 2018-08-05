@@ -39,7 +39,10 @@ f();ı
                 ========== 
                 window.methods
                     dialogs: alert(), confirm() - returns true or false, promtp('Qquestion will come here', 'Yes') first question latest default answer that can be changed
-                    setTimeOut
+                    setTimeOut/clearTimeOut
+                    setInterval/ClearIntrval
+                open() - opener() is the lisnk to the window that opened the current one 
+                moveTo(), resizeTo(), moveBy(), resizeBy();
             
 
 
@@ -89,3 +92,32 @@ function unDoSomth() {
 }
 
 // setInterval , clearInterval - works the same way but setInterval will repeat itself with the mentioned time that was set
+
+function User (name) {
+    this.name = name;
+    this.say = function () {console.log(this.name)};
+}
+
+let john = new User('John');
+
+function doSomth(){
+    setTimeout('john.say()', 2000);
+}
+
+
+// NEW WINDOW OPEN 
+button.addEventListener('click', openNewWindow);
+let w;
+function openNewWindow(){
+        // parem: 1url, 1wndw name, 
+    w = window.open('about:blank', 'x')
+    
+        // focus/blur
+    // w.close();
+}
+
+
+
+
+
+
