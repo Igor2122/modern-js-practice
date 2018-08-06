@@ -17,17 +17,22 @@
         </div>
     </div>
     <button id="button">Click</button>
-    <div class="container border rounded mt-5">
+    <div class="container w-50 border rounded mt-5">
         <div class="row form-wrapper ">
             <div class="col my-4">
-                <form action="http://google.ru/search" target="_blank" name="search">
+                <form action="https://google.ru/search" target="_blank" name="search">
+                    <textarea name="ta"></textarea>
                     <fieldset>
                         <div class="">
-                            <label><span>Слово</span><input type="text" name="q" value="Уарабей"></label>
+                            <label><span class="ml-1">Слово</span>
+                            <input type="text" name="q" value="Уарабей"></label>
                         </div>
                     </fieldset>
                     <div class="d-flex justify-content-around">
                         <button><a href="javascript:f()">Кликнуть</a></button>
+                        <button><a href="javascript:focus()">Focus</a></button>
+                        <button><a href="javascript:blur()">Blur</a></button>
+                        <button><a href="javascript:select()">Select</a></button>
                         <button><a href="javascript:r()">Сбросить</a></button>
                         <button><a href="javascript:s()">Отправить</a></button>
                         <button type='submit'>Submit</button>
@@ -38,7 +43,7 @@
 
     </div>
 
-
+    <script type="text/javascript" src="document.js"></script>
     <!--<script type="text/javascript" src="bomsyntax.js"></script>-->
     <script type="text/javascript" src="document.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

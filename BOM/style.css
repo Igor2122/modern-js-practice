@@ -79,10 +79,14 @@
      }
  }
  
+ body {
+  background: #B5BEC6;
+ }
+ 
  .container {
      position: relative;
      /*height: 100px;*/
-     width: 300px;
+     /*width: 300px;*/
      
      /*border-radius: 2%;*/
  }
@@ -93,6 +97,6 @@
      padding: 10px;
      top: -25px;
      left: 5%;
-     background: #fff;
-     color: grey;
+     background: #B5BEC6;
+     color: #fff;
  }

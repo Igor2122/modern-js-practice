@@ -30,10 +30,10 @@
 
 */
 
-        // Practice with FORMS 
+// Practice with FORMS 
 
-        
-            
+
+
 /* 
     let frm = document.forms[0]
     undefined
@@ -45,3 +45,85 @@
     HTMLFormControlsCollection(2)[input, input.form-control.border]
 */
 
+var f;
+
+function f() {
+    // opt to get the form
+    f = document.forms[0];
+    // f = document.forms['search'];
+}
+
+// FROM METHODS: 
+// submit 
+//f.submit();// submits the form
+// reset 
+//f.reset(); // reset the form to original values
+
+function r() {
+    f = document.forms[0];
+    f.reset();
+}
+
+function s() {
+    f = document.forms[0];
+    // f.submit();
+    f.elements[5].click(); // chooses the 5th element and clicks on it 
+}
+
+// INPUT Parameters 
+/* 
+    let txt = f.elements[1] - f here refers to form in general
+    let txt = f.elements["q"]
+    let txt = f.elements.q   
+        properties: 
+            txt.name
+            "q"
+            txt.value
+            "Уарабей"
+            txt.value = 'Archie'
+            "Archie"
+            txt.type
+            "text"
+            txt.defaultValue = 'Archie' -  change    the default value of the input
+            txt.form.reset() - will reset the form
+*/
+// INPUT METHODS 
+/* 
+    focus()
+    blur()
+    select()
+    click()
+
+*/
+
+let txt;
+
+function focus() {
+    txt = f.elements[1];
+    txt.focus();
+    if(txt.focus){
+        txt.select();
+    }
+}
+
+function blur() {
+    txt = f.elements[1];
+    txt.blur();
+}
+function select() {
+    txt = f.elements[1];
+    txt.select();
+}
+
+// TEXT AREA has all the same 
+/* 
+    let txtarea = f.elements[0];
+    undefined
+    txtarea.value = "I would like to visit check"
+    "I would like to visit check"
+    txtarea.rows = 10;
+    10
+    txtarea.cols = 50;
+    50
+    
+*/
