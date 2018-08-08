@@ -85,10 +85,7 @@
  
  .container {
      position: relative;
-     /*height: 100px;*/
-     /*width: 300px;*/
      
-     /*border-radius: 2%;*/
  }
  
  .form-wrapper::after {
