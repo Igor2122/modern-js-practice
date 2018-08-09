@@ -6,9 +6,6 @@ let serialNumer = 0;
 //     return this.target.parentElement.parentElement.parentElement.previousSibling.previousSibling.previousSibling.previousSibling.innerHTML;
 // }
 
-
-
-
 //  Customer constructor 
 
 class Customer {
@@ -43,22 +40,22 @@ class UI {
             // alert(1);
             // if(qotationIcon == i){
             quotationDiv.innerHTML = `
-            <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Vehicle Purchase Quotation</h5>
-            <h5 class="modal-title">Customer's Name: <br> ${customerArray[i].name}</h5>
-            <h5 class="modal-title">Model of Interest: <br> ${customerArray[i].modelOfInterest}</h5>
-            <button class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <div class="modal-body">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus unde veniam harum magnam molestias dignissimos omnis architecto, quod, obcaecati dolorum debitis dolore porro qui, iusto quo accusantium voluptates pariatur illo.
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Vehicle Purchase Quotation</h5>
+                            <h5 class="modal-title">Customer's Name:${customerArray[0].name}  </h5>
+                            <h5 class="modal-title">Model of Interest:  </h5>
+                            <button class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus unde veniam harum magnam molestias dignissimos omnis architecto, quod, obcaecati dolorum debitis dolore porro qui, iusto quo accusantium voluptates pariatur illo.
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
         `;
     // }}
         quotaionList.appendChild(quotationDiv);
