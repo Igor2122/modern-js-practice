@@ -2,13 +2,6 @@ const list = document.getElementById('customer-list'),
     quotaionList = document.getElementById('quotation-list');
 const customerArray = [];
 let serialNumer = 0;
-let thisCustomer;
-// let qotationIcon = function (event) {
-//     let foo =
-//         event.target.parentElement.parentElement.parentElement.previousSibling.previousSibling.previousSibling.previousSibling.innerHTML;
-//         console.log(foo);
-//     return foo;
-// }
 
 //  Customer constructor 
 
@@ -28,8 +21,10 @@ class UI {
     }
 
     removeLi(e) {
-        e.target.parentElement.parentElement.remove();
-        customerArray.pop();
+        if(e.target.classList.contains('delete')){
+            e.target.parentElement.parentElement.remove();
+            customerArray.pop();
+        }
     }
 
 
@@ -40,8 +35,7 @@ class UI {
         quotationDiv.classList = 'modal';
         quotationDiv.setAttribute('id', 'myModal');
 
-        // for(let i = 0; i < customerArray.length; i ++){
-        // if(qotationIcon == i){
+
         quotationDiv.innerHTML = `
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -60,7 +54,7 @@ class UI {
                     </div>
                 </div>
         `;
-        // }}
+
         quotaionList.appendChild(quotationDiv);
     }
 
@@ -104,41 +98,42 @@ document.querySelector('.container-fluid').addEventListener('submit', function (
 
     // Calling the functions here 
     if (e.target.classList.contains('customer-add-form')) {
-        ui.addCustomer(customer);
-        ui.clearFields(customer);
-        serialNumer++;
+        if (custName == '' || modelInterest == '') {
+
+        } else {
+            ui.addCustomer(customer);
+            ui.clearFields(customer);
+            serialNumer++;
+        }
     }
 
-    // event listeners for the list items
-    document.querySelector('.container-fluid').addEventListener('click', function (e) {
+});
+
+// event listeners for the list items
+document.querySelector('.col-sm-8').addEventListener('click', function (e) {
+
+    e.preventDefault();
+
+    const ui = new UI();
+
+    // deleting the customer entry 
+    ui.removeLi(e);
 
 
-        const ui = new UI();
-
-        if(e.target.classList.contains('quotation')){
-            let customerName = (function () {
-                return event.target.parentElement.parentElement.childNodes[3].textContent;
-            })();
-            console.log(customerName);
     
-            thisCustomer = new Customer(customerName);
-        }
-        
-        
-        
-        
-        if (e.target.classList.contains('delete')) {
-            ui.removeLi(e);
-            console.log(customerArray);
-        }
-        
-        if (e.target.classList.contains('quotation')) {
-            
-            
+
+    if (e.target.classList.contains('quotation')) {
+
+        let customerName = (function () {
+            return event.target.parentElement.parentElement.childNodes[3].textContent;
+        })();
+        console.log(customerName);
+
+        const thisCustomer = new Customer(customerName);
+
+        console.log(thisCustomer);
 
 
-            ui.createQuotation(thisCustomer);
-        }
-    });
-
+        ui.createQuotation(thisCustomer);
+    }
 });
