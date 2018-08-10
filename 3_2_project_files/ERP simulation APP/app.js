@@ -13,6 +13,16 @@ class Customer {
     }
 }
 
+// Current customer 
+
+class CurrentCustomer {
+    constructor(name, modelInterest,typeOfInquiry){
+        this.name = name;
+        this.modelInterest = modelInterest;
+        this.typeOfInquiry = typeOfInquiry;
+    }
+}
+
 // *********  UI Constructor
 class UI {
 
@@ -129,7 +139,7 @@ document.querySelector('.col-sm-8').addEventListener('click', function (e) {
         })();
         console.log(customerName);
 
-        const thisCustomer = new Customer(customerName);
+        const thisCustomer = new CurrentCustomer(customerName);
 
         console.log(thisCustomer);
 
