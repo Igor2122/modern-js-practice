@@ -2,8 +2,12 @@ const list = document.getElementById('customer-list'),
     quotaionList = document.getElementById('quotation-list');
 const customerArray = [];
 let serialNumer = 0;
-// let qotationIcon = new Function(event){
-//     return this.target.parentElement.parentElement.parentElement.previousSibling.previousSibling.previousSibling.previousSibling.innerHTML;
+let thisCustomer;
+// let qotationIcon = function (event) {
+//     let foo =
+//         event.target.parentElement.parentElement.parentElement.previousSibling.previousSibling.previousSibling.previousSibling.innerHTML;
+//         console.log(foo);
+//     return foo;
 // }
 
 //  Customer constructor 
@@ -18,7 +22,7 @@ class Customer {
 
 // *********  UI Constructor
 class UI {
-    
+
     clearFields() {
         document.getElementById('cust-name').value = '';
     }
@@ -28,23 +32,22 @@ class UI {
         customerArray.pop();
     }
 
-    createQuotation(customerArray) {
-        
-            
-        
+
+
+    createQuotation(thisCustomer) {
+
         const quotationDiv = document.createElement('div');
         quotationDiv.classList = 'modal';
         quotationDiv.setAttribute('id', 'myModal');
-        
+
         // for(let i = 0; i < customerArray.length; i ++){
-            // alert(1);
-            // if(qotationIcon == i){
-            quotationDiv.innerHTML = `
+        // if(qotationIcon == i){
+        quotationDiv.innerHTML = `
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">Vehicle Purchase Quotation</h5>
-                            <h5 class="modal-title">Customer's Name:${customerArray[0].name}  </h5>
+                            <h5 class="modal-title">Customer's Name: ${thisCustomer.name} </h5>
                             <h5 class="modal-title">Model of Interest:  </h5>
                             <button class="close" data-dismiss="modal">&times;</button>
                         </div>
@@ -57,20 +60,24 @@ class UI {
                     </div>
                 </div>
         `;
-    // }}
+        // }}
         quotaionList.appendChild(quotationDiv);
     }
 
     addCustomer(customer) {
         // create list element 
-        const li = document.createElement('tr');
-        
+        let li = document.createElement('tr');
+        li.setAttribute('name', customer.name);
+
         li.innerHTML = `
         <td>${serialNumer}</td>
         <td>${customer.name}</td>
         <td>${customer.modelOfInterest}</td>
         <td>${customer.typeOfInquiry}</td>
-    <td data-toggle="modal" data-target="#myModal"><div class="hidden"><a href="#"  class="fas fa-file-invoice-dollar quotation"></div></a></td>
+        <td data-toggle="modal" data-target="#myModal">
+                <a href="#"  class="fas fa-file-invoice-dollar quotation">
+            </a>
+        </td>
         <td><a href="#" class="fas fa-trash-alt delete"></a></td>
     `;
         list.appendChild(li);
@@ -79,11 +86,8 @@ class UI {
 
 // ********    Listen to the events 
 document.querySelector('.container-fluid').addEventListener('submit', function (e) {
-    // get the parent list  
     e.preventDefault();
-
-    console.log(customerArray);
-
+    // console.log(customerArray);
     // getting the values of inputs 
     const custName = document.getElementById('cust-name').value,
         modelInterest = document.getElementById('model-of-interest').value,
@@ -93,30 +97,47 @@ document.querySelector('.container-fluid').addEventListener('submit', function (
 
     // add customer to array
     customerArray.push(customer);
-    
-    console.log(customerArray);
+
+    // console.log(customerArray);
+
     const ui = new UI();
 
     // Calling the functions here 
     if (e.target.classList.contains('customer-add-form')) {
         ui.addCustomer(customer);
         ui.clearFields(customer);
-        serialNumer ++;
+        serialNumer++;
     }
 
     // event listeners for the list items
     document.querySelector('.container-fluid').addEventListener('click', function (e) {
 
-        console.log(e.target.innerHTML);
 
+        const ui = new UI();
+
+        if(e.target.classList.contains('quotation')){
+            let customerName = (function () {
+                return event.target.parentElement.parentElement.childNodes[3].textContent;
+            })();
+            console.log(customerName);
+    
+            thisCustomer = new Customer(customerName);
+        }
+        
+        
+        
+        
         if (e.target.classList.contains('delete')) {
             ui.removeLi(e);
             console.log(customerArray);
         }
-
+        
         if (e.target.classList.contains('quotation')) {
-            ui.createQuotation(customerArray);
-            console.log(e.target.parentElement.parentElement.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.innerHTML);
+            
+            
+
+
+            ui.createQuotation(thisCustomer);
         }
     });
 
