@@ -10,106 +10,175 @@
 </head>
 
 <body>
-    <h1>Book List</h1>
-    <ul id="book-list">
-        <li>Book 1</li>
-        <li>Book 2</li>
-        <li>Book 3</li>
-        <li>Book 4</li>
-    </ul>
-    <h1>DVD List </h1>
-    <ul id="dvd-list">
-        <li>DVD 1</li>
-        <li>DVD 2</li>
-        <li>DVD 3</li>
-        <li>DVD 4</li>
-    </ul>
-    <style>
-        #book-list,
-        #dvd-list{
-            position: relative;
+    <div class="my-version">
 
-        }
+        <h1>Book List</h1>
+        <ul id="book-list">
+            <li>Book 1</li>
+            <li>Book 2</li>
+            <li>Book 3</li>
+            <li>Book 4</li>
+        </ul>
+        <h1>DVD List </h1>
+        <ul id="dvd-list">
+            <li>DVD 1</li>
+            <li>DVD 2</li>
+            <li>DVD 3</li>
+            <li>DVD 4</li>
+        </ul>
+        <style>
+            #book-list,
+            #dvd-list {
+                position: relative;
 
-        #book-list>li,
-        #dvd-list>li {
-            display: none;
-        }
-
-        .expand-book-list {
-            display: block;
-        }
-    </style>
-    <script>
-        let bookList = document.getElementById('book-list');
-        let DVDList = document.getElementById('dvd-list');
-        let expand = document.querySelector('.open');
-
-        let k = document.createElement('i');
-
-        class Ui {
-
-            showIcon(el, parent) {
-                k.setAttribute('style', 'position: absolute;top:-50px;left: 160px;');
-                k.className = el;
-                parent.appendChild(k);
             }
 
-            removeIcon(parent) {
-                parent.removeChild(k)
+            #book-list>li,
+            #dvd-list>li {
+                display: none;
             }
 
-            expandList(parent) {
-                for (let i = 0; i < parent.children.length; i++) {
-                    parent.children[i].style.display = 'block';
+            .expand-book-list {
+                display: block;
+            }
+        </style>
+        <script>
+            let bookList = document.getElementById('book-list');
+            let DVDList = document.getElementById('dvd-list');
+            let expand = document.querySelector('.open');
+
+            let k = document.createElement('i');
+
+            class Ui {
+
+                showIcon(el, parent) {
+                    k.setAttribute('style', 'position: absolute;top:-50px;left: 160px;');
+                    k.className = el;
+                    parent.appendChild(k);
                 }
-            }
-            closeList(parent) {
-                for (let i = 0; i < parent.children.length; i++) {
-                    parent.children[i].style.display = 'none';
+
+                removeIcon(parent) {
+                    parent.removeChild(k)
                 }
+
+                expandList(parent) {
+                    for (let i = 0; i < parent.children.length; i++) {
+                        parent.children[i].style.display = 'block';
+                    }
+                }
+                closeList(parent) {
+                    for (let i = 0; i < parent.children.length; i++) {
+                        parent.children[i].style.display = 'none';
+                    }
+                }
+
             }
 
-        }
+            let openIcon = 'fas fa-plus'
+            let closeIcon = 'far fa-window-close'
 
-        let openIcon = 'fas fa-plus'
-        let closeIcon = 'far fa-window-close'
+            let list = new Ui();
+            let secondList = new Ui();
 
-        let list = new Ui();
-        let secondList = new Ui();
+            list.showIcon(openIcon, bookList);
+            // list.showIcon(openIcon, DVDList);
+            // secondList.showIcon(openIcon, DVDList);
 
-        list.showIcon(openIcon, bookList);
-        // list.showIcon(openIcon, DVDList);
-        // secondList.showIcon(openIcon, DVDList);
-        
 
-        // event listeners 
-        bookList.addEventListener('click', function(e) {
-            if (e.target.classList.contains('fa-plus')) {
-                list.expandList(bookList);
-                console.log('hello');
-                list.showIcon(closeIcon, bookList);
-            }
-            else if (e.target.classList.contains('fa-window-close')) {
-                list.closeList(bookList);
-                list.showIcon(openIcon, bookList);
-            }
-        });
-        
-        
-        DVDList.addEventListener('click', function(e) {
-            if (e.target.classList.contains('fa-plus')) {
-                list.expandList(DVDList);
-                console.log('hello');
-                list.showIcon(closeIcon, DVDList);
-            }
-            else if (e.target.classList.contains('fa-window-close')) {
-                list.closeList(DVDList);
-                list.showIcon(openIcon, DVDList);
-            }
-        });
-    </script>
-    <script type="text/javascript" src="expandable-list.js"></script>
+            // event listeners 
+            bookList.addEventListener('click', function(e) {
+                if (e.target.classList.contains('fa-plus')) {
+                    list.expandList(bookList);
+                    console.log('hello');
+                    list.showIcon(closeIcon, bookList);
+                }
+                else if (e.target.classList.contains('fa-window-close')) {
+                    list.closeList(bookList);
+                    list.showIcon(openIcon, bookList);
+                }
+            });
+
+
+            DVDList.addEventListener('click', function(e) {
+                if (e.target.classList.contains('fa-plus')) {
+                    list.expandList(DVDList);
+                    console.log('hello');
+                    list.showIcon(closeIcon, DVDList);
+                }
+                else if (e.target.classList.contains('fa-window-close')) {
+                    list.closeList(DVDList);
+                    list.showIcon(openIcon, DVDList);
+                }
+            });
+        </script>
+    </div>
+    <div class="class-version" style="background:#d3d3d3;">
+        <h1>Sample of unfolded list</h1>
+        <ul class="expandable">
+            <li>
+                <a href="#">Books</a>
+                <ul class="expandable">
+                    <li>
+                        <a href="#">Domestic</a>
+                        <ul class="expandable">
+                            <li><a href="">Detectives</a></li>
+                            <li><a href="">Novels</a></li>
+                            <li><a href="">SCI-Fi</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Foreign</a>
+                        <ul class="expandable">
+                            <li><a href="">Detectives</a></li>
+                            <li><a href="">Novels</a></li>
+                            <li><a href="">SCI-Fi</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Foreign</a>
+                        <ul class="expandable">
+                            <li><a href="">Detectives</a></li>
+                            <li><a href="">Novels</a></li>
+                            <li><a href="">SCI-Fi</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">DVD</a>
+                <ul class="expandable">
+                    <li>
+                        <a href="#">Domestic</a>
+                        <ul class="expandable">
+                            <li><a href="">Detectives</a></li>
+                            <li><a href="">Novels</a></li>
+                            <li><a href="">SCI-Fi</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Foreign</a>
+                        <ul class="expandable">
+                            <li><a href="">Detectives</a></li>
+                            <li><a href="">Novels</a></li>
+                            <li><a href="">SCI-Fi</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Foreign</a>
+                        <ul class="expandable">
+                            <li><a href="">Detectives</a></li>
+                            <li><a href="">Novels</a></li>
+                            <li><a href="">SCI-Fi</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <a href="#"></a>
+        </ul>
+    </div>
+
+
+    <script type="text/javascript" src="app.js"></script>
 </body>
 
 </html>
