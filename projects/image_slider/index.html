@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <head>
+        <h1>Image Slider</h1>
+    </head>
+    <style type="text/css">
+        .container {
+            background: #5299AF;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+            /*overflow: hidden;*/
+        }
+
+        .img-slider {
+            width: 40%;
+            height: 50vh;
+            position: relative;
+        }
+
+        .img {
+            position: absolute;
+            background-repeat: no-repeat;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: opacity .5s linear;
+        }
+
+        .first-image {
+            background: center / cover no-repeat url('https://images.pexels.com/photos/1329710/pexels-photo-1329710.jpeg?auto=compress&cs=tinysrgb&h=350');
+        }
+
+        .second-image {
+            background: center / cover no-repeat url('https://images.pexels.com/photos/1319839/pexels-photo-1319839.jpeg?auto=compress&cs=tinysrgb&h=350');
+        }
+
+        .third-image {
+            background: center / cover no-repeat url('https://images.pexels.com/photos/1323206/pexels-photo-1323206.jpeg?auto=compress&cs=tinysrgb&h=350');
+        }
+
+        .btn {
+            position: absolute;
+            width: auto;
+            padding: 7px;
+            background: #fff;
+            cursor: pointer;
+        }
+
+        .change-right {
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .change-left {
+            top: 50%;
+            right: 0;
+            transform: translate(50%, -150%);
+        }
+        
+        .text {
+            color: #fff;
+            position: absolute;
+            right: 50%;
+            bottom: 50%;
+            transition: all .3s linear;
+            z-index: 1;
+        }
+    </style>
+
+    <body>
+        <div class="container">
+            <div class="img-slider">
+                <div class="first-image img">
+                    <div class="text">First Image</div>
+                </div>
+                <div class="second-image img">
+                    <div class="text">Second Image</div>
+                </div>
+                <div class="third-image img">
+                    <div class="text">Third Image</div>
+                </div>
+                <buttons class="change-right btn">Next</buttons>
+                <buttons class="change-left btn">Prev</buttons>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+
+</html>
