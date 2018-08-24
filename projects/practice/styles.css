@@ -1,0 +1,40 @@
+.color-change {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+.famous-quotes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    min-height: 50%;
+    justify-content: space-between;
+    align-content: space-around;
+    margin-bottom: 10%;
+}
+
+.buttons>a {
+    border: 1px solid grey;
+    padding: .25rem;
+    border-radius: 20px;
+    color: #fff;
+    flex-grow: 4;
+    text-decoration: none;
+}
+            
+.number {
+    transition: display .5s linear;
+}
+    
+.div {
+    height: 50px;
+}
