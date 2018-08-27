@@ -1,37 +1,77 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
 	<title>Синхронные и асинхронные запросы</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Language" content="ru" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Language" content="ru" />
 	<link rel="stylesheet" type="text/css" href="styles.css" />
 	<script type="text/javascript" src="../xmlhttprequest.js"></script>
 	<script type="text/javascript">
 		// URL сценария, возвращающего время
-		var url = "gettime.php?delay=3";		// Задержка в запросе:  gettime.php?delay=3
+
+
+		function getXmlHttpRequest() {
+			if (window.getXmlHttpRequest) {
+				try {
+					return new XMLHttpRequest();
+				}
+				catch (e) {}
+			}
+			else if (window.ActiveXObject) {
+				try {
+					return new ActiveXObject("Msxml2.XMLHTTP");
+				}
+				catch (e) {}
+				try {
+					return new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				catch (e) {}
+			}
+			return null;
+		}
+
+
+		var url = "gettime.php?delay=3"; // Задержка в запросе:  gettime.php?delay=3
 		var request;
 
 
 		// Синхронный запрос
-		function showSyncRequest(){
+		function showSyncRequest() {
 			// Запрос
+			request = getXmlHttpRequest();
+			request.open("GET", url, false);
+			request.send(null);
+			let result = document.getElementById('syncResult');
+			result.firstChild.nodeValue = request.responseText;
 
 			// Вывод ответа
 
 		}
 
 		// Асинхронный запрос
-		function showAsyncRequest(){
+		function showAsyncRequest() {
 			// Запрос
+
+			request = getXmlHttpRequest();
+			request.open('GET', url, true);
+			request.send(null);
+			request.onreadystatechange = showAsyncRequestComplete;
+			console.log(request.readyState);
 
 		}
 
 		// Завершение асинхронного запроса
-		function showAsyncRequestComplete(){
-
+		function showAsyncRequestComplete() {
+			if (request.readyState === 4) {
+				let result = document.getElementById('asyncResult');
+				result.firstChild.nodeValue = request.responseText;
+				console.log(request.readyState);
+			}
 		}
 	</script>
 </head>
+
 <body>
 	<h1>Синхронные и асинхронные запросы</h1>
 	<div id="sync">
@@ -45,5 +85,5 @@
 		<button onclick="showAsyncRequest()">Пробуем!</button>
 	</div>
 </body>
-</html>
 
+</html>
