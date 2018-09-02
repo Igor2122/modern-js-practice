@@ -6,7 +6,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="Content-Language" content="ru" />
 	<link rel="stylesheet" type="text/css" href="styles.css" />
-	<script type="text/javascript" src="../xmlhttprequest.js"></script>
 	<script type="text/javascript">
 		// URL сценария, возвращающего время
 
@@ -38,6 +37,7 @@
 
 		// Синхронный запрос
 		function showSyncRequest() {
+			console.log(1);
 			// Запрос
 			request = getXmlHttpRequest();
 			request.open("GET", url, false);

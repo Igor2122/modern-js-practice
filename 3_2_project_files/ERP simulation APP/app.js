@@ -1,3 +1,4 @@
+const quotationDiv = document.createElement('div');
 const list = document.getElementById('customer-list'),
     quotaionList = document.getElementById('quotation-list');
 const customerArray = [];
@@ -16,7 +17,7 @@ class Customer {
 // Current customer 
 
 class CurrentCustomer {
-    constructor(name, modelInterest,typeOfInquiry){
+    constructor(name, modelInterest, typeOfInquiry) {
         this.name = name;
         this.modelInterest = modelInterest;
         this.typeOfInquiry = typeOfInquiry;
@@ -31,7 +32,7 @@ class UI {
     }
 
     removeLi(e) {
-        if(e.target.classList.contains('delete')){
+        if (e.target.classList.contains('delete')) {
             e.target.parentElement.parentElement.remove();
             customerArray.pop();
         }
@@ -41,31 +42,45 @@ class UI {
 
     createQuotation(thisCustomer) {
 
-        const quotationDiv = document.createElement('div');
         quotationDiv.classList = 'modal';
         quotationDiv.setAttribute('id', 'myModal');
 
-
         quotationDiv.innerHTML = `
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Vehicle Purchase Quotation</h5>
-                            <h5 class="modal-title">Customer's Name: ${thisCustomer.name} </h5>
-                            <h5 class="modal-title">Model of Interest:  </h5>
-                            <button class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus unde veniam harum magnam molestias dignissimos omnis architecto, quod, obcaecati dolorum debitis dolore porro qui, iusto quo accusantium voluptates pariatur illo.
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
+        <div class="modal-dialog w-100">
+        <div class="modal-content ">
+            <h5 class="modal-title">Vehicle Purchase Quotation</h5>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5 class="modal-title">Customer's Name: ${thisCustomer.name} </h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="modal-title">Model of Interest: ${thisCustomer.modelInterest} </h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="modal-title">Model of Interest: ${thisCustomer.typeOfInquiry} </h5>
                     </div>
                 </div>
+                <button class="close" data-dismiss="modal">&times;</button>
+
+                <div class="modal-body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus unde veniam harum magnam
+                    molestias dignissimos omnis architecto, quod, obcaecati dolorum debitis dolore porro qui, iusto quo
+                    accusantium voluptates pariatur illo.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
         `;
 
         quotaionList.appendChild(quotationDiv);
+    }
+
+    deleteQuotation() {
+        quotationDiv.innerHTML = '';
     }
 
     addCustomer(customer) {
@@ -130,20 +145,37 @@ document.querySelector('.col-sm-8').addEventListener('click', function (e) {
     ui.removeLi(e);
 
 
-    
+
 
     if (e.target.classList.contains('quotation')) {
 
         let customerName = (function () {
             return event.target.parentElement.parentElement.childNodes[3].textContent;
         })();
-        console.log(customerName);
+        let modelOfinterest = (function () {
+            return event.target.parentElement.parentElement.childNodes[5].textContent;
+        })();
+        let typeOfInquiry = (function () {
+            return event.target.parentElement.parentElement.childNodes[7].textContent;
+        })();
 
-        const thisCustomer = new CurrentCustomer(customerName);
+        console.log( event.target.parentElement.parentElement.childNodes);
+        console.log(event.target.parentElement.parentElement.childNodes[7].textContent );
+
+        const thisCustomer = new CurrentCustomer(customerName, modelOfinterest, typeOfInquiry);
 
         console.log(thisCustomer);
 
 
         ui.createQuotation(thisCustomer);
+
+    } 
+
+    if (e.target.classList.contains('close')) {
+        ui.deleteQuotation();
+        console.log(1);
     }
+
+
 });
+
