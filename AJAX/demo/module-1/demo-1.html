@@ -5,41 +5,25 @@
 	<title>Пример запроса данных с сервера</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="Content-Language" content="ru" />
-	
+	<script type="text/javascript" src="../xmlhttprequest.js"></script>	
 	
 	<script type="text/javascript">
-		/* 
+			/* 
 				XMLHttpRequest - as oany other object has it'w own prperties and methods 
 			*/
-
-		function getXmlHttpRequest() {
-			if (window.getXmlHttpRequest) {
-				try {
-					return new XMLHttpRequest();
-				} catch (e) {}
-			} else if (window.ActiveXObject) {
-				try {
-					return new ActiveXObject("Msxml2.XMLHTTP");
-				} catch (e) {}
-				try {
-					return new ActiveXObject("Microsoft.XMLHTTP");
-				} catch(e) {}
-			} 
-			return null;
-		}
+		
 
 
 		function showDemoSample() {
 			// Адрес текущей страницы
-			let url = location.href;
+			let url = location.href;// will return itself
 			// Объект XMLHttpRequest
-			let request = getXmlHttpRequest();
-			// Запрос на сервер
+			let request = getXmlHttpRequest(); // from the file 
+			// is prepearing the requst (methothod, )
 			request.open('GET', url, false);
 			// Чтение ответа
 			request.send(null);
 			console.log(request.responseText);
-			alert('hi there');
 			
 		}
 	</script>
