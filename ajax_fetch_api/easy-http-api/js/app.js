@@ -33,7 +33,7 @@ const http = new easyHTTP;
 // Update Popst - PUT 
 
 http.put('https://jsonplaceholder.typicode.com/posts/1', data, function(err, post) {
-      if(err){
+      if(err){ 
       console.log(err);// checking here for erros 
       } else {
          console.log(post);
