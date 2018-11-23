@@ -42,9 +42,7 @@ function getJson() {
 // Get Eternal Api
 function getApiEternal() {
    fetch('https://api.github.com/users')
-      .then(res => {
-         return res.json();
-      })
+      .then(res => res.json())
       .then(data => {
          console.log(data);
          let output = '';
@@ -55,8 +53,6 @@ function getApiEternal() {
          document.getElementById('output').innerHTML = output;
 
       }) // if there is an error 
-      .catch(err => {
-         console.log(err);
-      })
+      .catch(err => console.log(err))
 }
 
