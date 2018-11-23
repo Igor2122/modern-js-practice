@@ -1,11 +1,12 @@
 const http = new EasyHTTP;
 
 // Get Users  
-// http.get('https://jsonplaceholder.typicode.com/users')
-// .then(data => data.forEach(user => {
-//    console.log(user.name);
-// }))
-// .catch(err => console.log(err));
+
+http.get('https://jsonplaceholder.typicode.com/users')
+.then(data => data.forEach(user => {
+   console.log(user.name);
+}))
+.catch(err => console.log(err));
 
 
 // User data
