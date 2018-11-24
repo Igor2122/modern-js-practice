@@ -13,12 +13,14 @@ serchUser.addEventListener('keyup', (e) => {
       github.getuser(userText)
          .then(data => {
             if (data.profile.message === 'Not Found') {
-               alert('User Is not Found')
+               ui.showAlert('User not found', 'alert alert-danger')
             } else {
+               // show profile 
                ui.showProfile(data.profile);
+               ui.showRepos(data.repos); // repos will be a part of the data object
             }
-         })
+         });
    } else {
-      // Clear profile
+      ui.clearProfile();
    }
 })

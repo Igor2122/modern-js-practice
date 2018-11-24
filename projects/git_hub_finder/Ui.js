@@ -29,6 +29,53 @@ class UI {
    </div>
    <h3 class="page-heading mb-3">Latest Repos </h3>
    <div id="repos"></div>
-      `
+   `
+   }
+   
+   clearProfile () {
+      this.profile.innerHTML = '';
+   }
+   
+   clearAlertMessage () {
+      const currentAlert = document.querySelector('.alert')
+      if(currentAlert){
+         currentAlert.remove();
+      }
+   }
+   
+   showAlert (message, className) {
+      // Clear any remaining alerts
+      this.clearAlertMessage();
+      const div = document.createElement('div');
+      div.className = className;
+      div.appendChild(document.createTextNode(message));
+      document.querySelector('.searchContainer').appendChild(div);
+      
+      // remove after 3 sec 
+      setTimeout(() => {
+         this.clearAlertMessage();
+      }, 3000);
+   }
+   
+   showRepos (reposArr) {
+      let output = '';
+      reposArr.forEach((repo)=> {
+         output += `
+            <div class="card card-body mb-2">
+               <div class="row">
+                  <div class="col-md-6">
+                     <a href="${repo.html_url}" target="_blank">${repo.name}</a> 
+                  </div>
+                  <div class="col-md-6">
+                     <div class="list-group-item">Stars: ${repo.stargazers_count}</div>
+                     <div class="list-group-item">Watchers: ${repo.watchers_count}</div>
+                     <div class="list-group-item">Forks: ${repo.forks_count}</div>
+                  </div>
+               </div>
+            </div>
+         `;
+      });
+      
+      document.getElementById('repos').innerHTML =  output;// getting the repos div from the profile dyn generated
    }
 }

@@ -2,19 +2,26 @@
 
 class Github {
    constructor() {
-       this.client_id = 'd937ba7a41cca36fc1da';
-       this.client_secret = 'adbcf6bc57c659db585388efc429c558e178e568';
+       this.clientId = 'd937ba7a41cca36fc1da';
+       this.clientSecret = 'aa047141782b8686be094b16ba3b4e2d5eee3802';
+       this.reposCount = 5;
+       this.reposSort = 'created: asc';
    }
 
    async getuser (user) {
-      const profileResponse  = 
-      await fetch(`https://api.github.com/users/${user}?clinet_id=${this.client_id}&client_secret${this.client_secret}`);
+      const profileResponse = await fetch(`https://api.github.com/users/${user}?client_id=${this.clientId}&client_secret=${this.clientSecret}`);
+      
+      
+      const repoResponse = await fetch(`https://api.github.com/users/${user}/repos?per_page=${this.reposCount}&sort=${this.reposSort}&client_id=${this.clientId}&client_secret=${this.clientSecret}`);
 
       const profile = await profileResponse.json();
+      
+      const repos = await repoResponse.json();
 
-      return {
+      return { 
          // es6 plus if both are the same we can keep only one 'profile'
-         profile
+         profile,
+         repos: repos // is the same as above 
       }
    }
 }
