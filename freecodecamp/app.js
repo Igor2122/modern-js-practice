@@ -76,7 +76,7 @@ function quickCheck(arr, elem) {
 console.log(quickCheck(['squash', 'onions', 'shallots'], 'mushrooms'));
 
 
-
+// FILTERING NESTED ARRAYS TO REMOVE PROVIDED VALUE
 function filteredArray(arr, elem) {
   // console.log(arr, elem);
   let newArr = [];
@@ -85,16 +85,149 @@ function filteredArray(arr, elem) {
     for (var j = 0; j < arr[i].length; j++) {
     }
       if(arr[i].indexOf(elem) < 0) {
-        console.log(arr[i]);
         newArr.push(arr[i]);
-      } else {
-        newArr = [];
-      }
+      } 
      
   }
   
   return newArr;
 }
-
 // change code here to test different cases:
 console.log(filteredArray([[10, 8, 3], [14, 6, 23], [3, 18, 6]], 18));
+
+
+let foods = {
+  apples: 25,
+  oranges: 32,
+  plums: 28,
+  bananas: 13,
+  grapes: 35,
+  strawberries: 27
+};delete foods.oranges, 
+delete foods.plums, 
+delete foods.strawberries;
+console.log(foods);
+
+// HAS OWN PROPERTY IN THE OBJECT 
+/*
+let users = {
+  Alan: {
+    age: 27,
+    online: true
+  },
+  Jeff: {
+    age: 32,
+    online: true
+  },
+  Sarah: {
+    age: 48,
+    online: true
+  },
+  Ryan: {
+    age: 19,
+    online: true
+  }
+};
+
+function isEveryoneHere(obj) {
+  if(obj.hasOwnProperty('Alan', 'Jeff', 'Sarah', 'Ryan')){
+    return true;
+  } else {
+    return false;
+  }
+}
+
+console.log(isEveryoneHere(users));
+*/
+
+// LOOP THROUGH AN OPBJECT WITH for(let ... in ... ) {}
+
+let userss = {
+  Alan: {
+    age: 27,
+    online: false
+  },
+  Jeff: {
+    age: 32,
+    online: true
+  },
+  Sarah: {
+    age: 48,
+    online: false
+  },
+  Ryan: {
+    age: 19,
+    online: true
+  }
+};
+
+// Filter online users 
+
+function countOnline(obj) {
+  // change code below this line
+  let onlineUsers = 0;
+  for(let i in userss){
+    if(userss[i].online == true){
+      onlineUsers ++;
+    }
+  }
+  // change code above this line
+  return onlineUsers;
+}
+
+
+console.log(countOnline(userss));
+
+
+// Object Keys 
+/*
+let users = {
+  Alan: {
+    age: 27,
+    online: false
+  },
+  Jeff: {
+    age: 32,
+    online: true
+  },
+ 
+
+function getArrayOfUsers(obj) {
+  // change code below this line
+  let result = Object.keys(obj);
+  return result;
+  // change code above this line
+}
+
+console.log(getArrayOfUsers(users));
+*/
+
+let user = {
+  name: 'Kenneth',
+  age: 28,
+  data: {
+    username: 'kennethCodesAllDay',
+    joinDate: 'March 26, 2016',
+    organization: 'freeCodeCamp',
+    friends: [
+      'Sam',
+      'Kira',
+      'Tomo'
+    ],
+    location: {
+      city: 'San Francisco',
+      state: 'CA',
+      country: 'USA'
+    }
+  }
+};
+function addFriend(userObj, friend) {
+  // change code below this line  
+  let res = userObj.data.friends.push(friend);
+  return res;
+  // change code above this line
+}
+
+console.log(user.data.friends);
+console.log(addFriend(user, 'Pete'));
+
