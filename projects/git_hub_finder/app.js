@@ -17,6 +17,7 @@ serchUser.addEventListener('keyup', (e) => {
             } else {
                // show profile 
                ui.showProfile(data.profile);
+               console.log(ui.showProfile(data.profile));
                ui.showRepos(data.repos); // repos will be a part of the data object
             }
          });
