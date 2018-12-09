@@ -87,8 +87,45 @@ function confirmEnding(str, target) {
 // console.log(confirmEnding("Bastian", "n"));
 // console.log(confirmEnding("He has to give me a new name", "name"));
 // console.log(confirmEnding("Open sesame", "pen"));
-console.log(confirmEnding("Abstraction", "action"));
+// console.log(confirmEnding("Abstraction", "action"));
 
+
+function repeatStringNumTimes(str, num) {
+  // repeat after me
+  let res = '';
+  for (var i = 0; i < num; i++ ) {
+      res += str;
+      console.log(i);
+  }
+  return res;
+}
+
+// console.log(repeatStringNumTimes("abc", 3));
+// console.log(repeatStringNumTimes("abc", 4));
+// console.log(repeatStringNumTimes("*", 3));
+
+
+// Truncate a String
+
+function truncateString(str, num) {
+  // Clear out that junk in your trunk
+  let strRes = '';
+  let strArr = str.split('');
+  let cont = 0;
+  for(let i = 0; i < num; i++){
+    cont += i;
+    strRes +=strArr[i];
+  }
+  console.log(cont);
+  if(str.length <= num){
+    return strRes
+  }
+  return strRes + '...';
+}
+
+console.log(truncateString("A-tisket a-tasket A green and yellow basket", 8));
+console.log(truncateString("A-tisket a-tasket A green and yellow basket", "A-tisket a-tasket A green and yellow basket".length));
+console.log(truncateString("A-tisket a-tasket A green and yellow basket", "A-tisket a-tasket A green and yellow basket".length + 2));
 
 
 
