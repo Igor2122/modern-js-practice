@@ -114,6 +114,9 @@ function truncateString(str, num) {
   let cont = 0;
   for(let i = 0; i < num; i++){
     cont += i;
+    if(strArr[i] === undefined){
+      break;
+    }
     strRes +=strArr[i];
   }
   console.log(cont);
@@ -123,9 +126,30 @@ function truncateString(str, num) {
   return strRes + '...';
 }
 
-console.log(truncateString("A-tisket a-tasket A green and yellow basket", 8));
-console.log(truncateString("A-tisket a-tasket A green and yellow basket", "A-tisket a-tasket A green and yellow basket".length));
-console.log(truncateString("A-tisket a-tasket A green and yellow basket", "A-tisket a-tasket A green and yellow basket".length + 2));
+// console.log(truncateString("A-tisket a-tasket A green and yellow basket", 8));
+// console.log(truncateString("A-tisket a-tasket A green and yellow basket", "A-tisket a-tasket A green and yellow basket".length));
+// console.log(truncateString("A-tisket a-tasket A green and yellow basket", "A-tisket a-tasket A green and yellow basket".length + 2));
+
+
+// Remainder  - ostatok  Finders Keepers
+
+function findElement(arr, func) {
+  let num = 0;
+  for (let i = 0; i < arr.length; i++) {
+    num = arr[i]
+    if(num % 2 === 0){
+      break;
+    } else{
+      num = undefined;
+    }
+  }
+  return num;
+}
+
+console.log(findElement([1, 2, 3, 4], num => num % 2 === 0));
+console.log(findElement([1, 3, 5, 8, 9, 10], function(num) { return num % 2 === 0; }));
+console.log(findElement([1, 3, 5, 9], function(num) { return num % 2 === 0; }));
+ 
 
 
 
