@@ -30,18 +30,13 @@ function bouncer(arr) {
   let bouncerKeys = [false, null, 0, NaN, undefined, ""];
   let outputArr = [];
 
-  
-  let res = arr.filter((res, i) => {
-    for(let i in bouncerKeys){
-      if(arr[i] === bouncerKeys[i])
-      console.log('one');
-      outputArr.push(arr[i]);
-      return outputArr;
+  for (const val in bouncerKeys) {
+    console.log(Boolean( arr[val]));
+    if (Boolean(arr[val]) === true) {
+      outputArr.push(arr[val]);
     }
-  })
-  
-  console.log(outputArr);
-  // return arr;
+  }
+  return outputArr;
 }
 
-console.log(bouncer([7, "ate", "", false, 9]));
+console.log(bouncer([7, "ate", "", false, 9]))
